@@ -8,8 +8,8 @@ createApp({
     const loading = ref(true);
 
     const statusMap = {
-      pending: { label: '待付款', cls: 'bg-apricot/20 text-apricot' },
-      paid: { label: '已付款', cls: 'bg-sage/20 text-sage' },
+      pending: { label: '待付款', cls: 'bg-ochre/20 text-ochre' },
+      paid: { label: '已付款', cls: 'bg-moss/20 text-moss' },
       failed: { label: '付款失敗', cls: 'bg-red-100 text-red-600' },
     };
 

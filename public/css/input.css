@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 @theme {
+  /* Legacy palette — kept for /admin (out of scope for the front-of-house redesign) */
   --color-rose-primary: #C4727F;
   --color-rose-dark: #A85B67;
   --color-rose-light: #E8A5AE;
@@ -12,6 +13,26 @@
   --color-text-primary: #2C2A28;
   --color-text-secondary: #6B6560;
   --color-text-muted: #9A948E;
+
+  /* 植物誌 Plant Journal palette — front-of-house */
+  --color-ink: #1E3322;
+  --color-ink-soft: #2D4A34;
+  --color-paper: #EDE4D3;
+  --color-paper-light: #FAF6EC;
+  --color-mulberry: #7A2E3D;
+  --color-mulberry-dark: #5C2130;
+  --color-ochre: #C68A2E;
+  --color-moss: #56694A;
+  --color-line: #B9AD8C;
+  --color-line-on-ink: #4A5D4C;
+  --color-fg-primary: #24231F;
+  --color-fg-secondary: #5B5648;
+  --color-fg-muted: #8C8571;
+  --color-fg-on-ink: #B9C4AE;
+
+  --font-heading: 'Noto Serif TC', serif;
+  --font-latin: 'Fraunces', serif;
+  --font-caption: 'IBM Plex Mono', monospace;
 }
 
 body {

@@ -1,30 +1,30 @@
 <div id="app" data-order-id="<%= orderId %>" data-payment-result="<%= paymentResult %>">
-  <h1 class="text-2xl font-bold text-text-primary mb-6" style="font-family: 'Noto Serif TC', serif;">訂單詳情</h1>
+  <h1 class="text-2xl font-bold text-ink mb-6" style="font-family: 'Noto Serif TC', serif;">訂單詳情</h1>
 
   <div v-if="loading" class="flex justify-center py-12">
-    <div class="w-8 h-8 border-4 border-rose-primary border-t-transparent rounded-full animate-spin"></div>
+    <div class="w-8 h-8 border-4 border-ink border-t-transparent rounded-full animate-spin"></div>
   </div>
 
   <template v-else-if="order">
     <!-- Payment Result Alert -->
     <div
       v-if="paymentResult && paymentMessages[paymentResult]"
-      class="rounded-xl p-4 mb-6 text-sm"
+      class="border p-4 mb-6 text-sm"
       :class="paymentMessages[paymentResult].cls"
     >
       {{ paymentMessages[paymentResult].text }}
     </div>
 
     <!-- Order Info -->
-    <div class="bg-white rounded-2xl shadow-sm p-6 mb-6">
+    <div class="bg-paper-light border border-line p-6 mb-6">
       <div class="flex items-start justify-between">
         <div>
-          <p class="text-sm text-text-secondary">訂單編號：{{ order.order_no }}</p>
-          <p class="text-xs text-text-muted mt-1">建立日期：{{ new Date(order.created_at).toLocaleDateString('zh-TW') }}</p>
+          <p class="text-sm text-fg-secondary">訂單編號：{{ order.order_no }}</p>
+          <p class="text-xs text-fg-muted mt-1" style="font-family: 'IBM Plex Mono', monospace;">建立日期：{{ new Date(order.created_at).toLocaleDateString('zh-TW') }}</p>
         </div>
         <span
-          class="text-xs px-3 py-1 rounded-full font-medium"
-          :class="statusMap[order.status]?.cls || 'bg-gray-100 text-gray-600'"
+          class="text-[11px] px-3.5 py-1.5 rounded-full font-semibold tracking-wide"
+          :class="statusMap[order.status]?.cls || 'bg-fg-muted/20 text-fg-muted'"
         >
           {{ statusMap[order.status]?.label || order.status }}
         </span>
@@ -32,9 +32,9 @@
     </div>
 
     <!-- Recipient Info -->
-    <div class="bg-white rounded-2xl shadow-sm p-6 mb-6">
-      <h2 class="font-medium text-text-primary mb-3">收件資訊</h2>
-      <div class="text-sm space-y-2 text-text-secondary">
+    <div class="bg-paper-light border border-line p-6 mb-6">
+      <h2 class="font-semibold text-fg-primary mb-3" style="font-family: 'Noto Serif TC', serif;">收件資訊</h2>
+      <div class="text-sm space-y-2 text-fg-secondary">
         <p>收件人：{{ order.recipient_name }}</p>
         <p>Email：{{ order.recipient_email }}</p>
         <p>地址：{{ order.recipient_address }}</p>
@@ -42,29 +42,29 @@
     </div>
 
     <!-- Order Items -->
-    <div class="bg-white rounded-2xl shadow-sm p-6 mb-6">
-      <h2 class="font-medium text-text-primary mb-3">商品明細</h2>
+    <div class="bg-paper-light border border-line p-6 mb-6">
+      <h2 class="font-semibold text-fg-primary mb-3" style="font-family: 'Noto Serif TC', serif;">商品明細</h2>
       <table class="w-full text-sm">
         <thead>
-          <tr class="border-b border-gray-100 text-text-muted">
-            <th class="text-left py-2 font-normal">商品名稱</th>
-            <th class="text-right py-2 font-normal">單價</th>
-            <th class="text-right py-2 font-normal">數量</th>
-            <th class="text-right py-2 font-normal">小計</th>
+          <tr class="border-b border-line text-fg-muted">
+            <th class="text-left py-2 font-normal text-xs tracking-wide" style="font-family: 'IBM Plex Mono', monospace;">商品名稱</th>
+            <th class="text-right py-2 font-normal text-xs tracking-wide" style="font-family: 'IBM Plex Mono', monospace;">單價</th>
+            <th class="text-right py-2 font-normal text-xs tracking-wide" style="font-family: 'IBM Plex Mono', monospace;">數量</th>
+            <th class="text-right py-2 font-normal text-xs tracking-wide" style="font-family: 'IBM Plex Mono', monospace;">小計</th>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="item in order.items" :key="item.id" class="border-b border-gray-50">
-            <td class="py-3 text-text-primary">{{ item.product_name }}</td>
-            <td class="py-3 text-right text-text-secondary">NT$ {{ item.product_price.toLocaleString() }}</td>
-            <td class="py-3 text-right text-text-secondary">{{ item.quantity }}</td>
-            <td class="py-3 text-right text-text-primary font-medium">NT$ {{ (item.product_price * item.quantity).toLocaleString() }}</td>
+          <tr v-for="item in order.items" :key="item.id" class="border-b border-line/60">
+            <td class="py-3 text-fg-primary">{{ item.product_name }}</td>
+            <td class="py-3 text-right text-fg-secondary">NT$ {{ item.product_price.toLocaleString() }}</td>
+            <td class="py-3 text-right text-fg-secondary">{{ item.quantity }}</td>
+            <td class="py-3 text-right text-fg-primary font-medium">NT$ {{ (item.product_price * item.quantity).toLocaleString() }}</td>
           </tr>
         </tbody>
         <tfoot>
           <tr>
-            <td colspan="3" class="pt-3 text-right font-bold text-text-primary">總計</td>
-            <td class="pt-3 text-right font-bold text-rose-primary text-lg">NT$ {{ order.total_amount.toLocaleString() }}</td>
+            <td colspan="3" class="pt-3 text-right font-bold text-fg-primary">總計</td>
+            <td class="pt-3 text-right font-bold text-mulberry text-lg" style="font-family: 'Fraunces', serif;">NT$ {{ order.total_amount.toLocaleString() }}</td>
           </tr>
         </tfoot>
       </table>
@@ -75,13 +75,13 @@
       <button
         @click="checkPayment"
         :disabled="paying"
-        class="bg-sage text-white px-8 py-3 rounded-full text-sm font-medium hover:bg-sage/90 transition-colors disabled:opacity-50"
+        class="border border-moss text-moss px-8 py-3 rounded text-sm font-medium hover:bg-moss hover:text-white transition-colors disabled:opacity-50"
       >
         {{ paying ? '查詢中...' : '查詢付款狀態' }}
       </button>
       <a
         :href="'/ecpay/payment/' + order.id"
-        class="inline-block bg-rose-primary text-white px-8 py-3 rounded-full text-sm font-medium hover:bg-rose-dark transition-colors text-center"
+        class="inline-block bg-ink text-paper-light px-8 py-3 rounded text-sm font-medium hover:bg-ink-soft transition-colors text-center"
       >
         前往付款
       </a>
